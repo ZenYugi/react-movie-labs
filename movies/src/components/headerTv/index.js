@@ -7,8 +7,8 @@ import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router-dom";
 
-const MovieHeader = (props) => {
-  const movie = props.movie;
+const TvHeader = (props) => {
+  const tv = props.tv;
   const navigate = useNavigate();
 
   return (
@@ -20,8 +20,6 @@ const MovieHeader = (props) => {
             flexWrap: "wrap",
             padding: 1.5,
             margin: 0,
-            color: "green",
-            backgroundColor: 'yellow',
         }}
       >
       <IconButton aria-label="go back" onClick={() => navigate(-1)} >
@@ -29,13 +27,12 @@ const MovieHeader = (props) => {
       </IconButton>
 
       <Typography variant="h4" component="h3">
-       <strong>{movie.title}</strong> 
-        <a href={movie.homepage}>
-          
-        <HomeIcon fontSize="large" color="error" />
+        {tv.title}
+        <a href={tv.homepage}>
+          <HomeIcon color="primary" />
         </a>
         <br />
-        <em><span sx={{ fontSize: "1.5rem"}}>{`   "${movie.tagline}"`} </span></em>
+        <span sx={{ fontSize: "1.5rem" }}>{`   "${tv.tagline}"`} </span>
       </Typography>
 
       <IconButton aria-label="go forward" onClick={() => navigate(+1) } >
@@ -45,4 +42,4 @@ const MovieHeader = (props) => {
   );
 };
 
-export default MovieHeader;
+export default TvHeader;

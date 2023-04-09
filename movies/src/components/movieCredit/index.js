@@ -1,17 +1,17 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 
-const MovieReview =  ({ review }) => {
+const MovieCredit =  ({ credit }) => {
   return (
     <>
     <Typography variant="h5" backgroundColor= 'rgb(211,211,211)' component="h3">
-      <strong>Review By: {review.author}</strong>
+      <strong>Review By: {credit.name}</strong>
     </Typography>
 
     <Typography variant="h6" backgroundColor= 'rgb(211,211,211)' component="p">
-      {review.content} 
+      {credit.character} 
     </Typography>
     </>
   );
 };
-export default MovieReview
+export default MovieCredit

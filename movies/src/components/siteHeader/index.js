@@ -27,7 +27,18 @@ const SiteHeader = ({ history }) => {
     { label: "Home", path: "/" },
     { label: "Favorites", path: "/movies/favorites" },
     { label: "Upcoming", path: "/movies/upcoming" },
-    { label: "Option 4", path: "/" },
+    { label: "Top Rated", path: "/movies/top_rated" },
+    { label: "Now Playing", path: "/movies/now_playing"},
+    { label: "Popular", path: "/movies/popular"},
+    { label: "Latest", path: "/movies/latest"},
+    
+
+   // { //label: "Tv On The Air", path: "/tv/on_the_air"},
+
+   // { //label: "Latest", path: "/tv/latest"},
+    
+   
+   
   ];
 
   const handleMenuSelect = (pageURL) => {
@@ -40,16 +51,20 @@ const SiteHeader = ({ history }) => {
 
   return (
     <>
-      <AppBar position="fixed" color="secondary">
-        <Toolbar>
-          <Typography variant="h4" sx={{ flexGrow: 1 }}>
-            TMDB Client
-          </Typography>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            All you ever wanted to know about Movies!
-          </Typography>
-            {isMobile ? (
-              <>
+    <AppBar position="fixed" color="primary">
+    <Toolbar>
+    <Typography variant="h4" color="yellow" sx={{ flexGrow: 1 }}>
+            Popcorn Media
+    </Typography>
+
+    <Typography variant="h6" color="yellow" sx={{ flexGrow: 1 }}>
+      All you ever wanted to know about Movies & Tv Shows!
+    </Typography>
+
+
+
+  {isMobile ? (
+  <>
                 <IconButton
                   aria-label="menu"
                   aria-controls="menu-appbar"
@@ -57,8 +72,9 @@ const SiteHeader = ({ history }) => {
                   onClick={handleMenu}
                   color="inherit"
                 >
-                  <MenuIcon />
+                <MenuIcon />
                 </IconButton>
+                
                 <Menu
                   id="menu-appbar"
                   anchorEl={anchorEl}
@@ -75,12 +91,12 @@ const SiteHeader = ({ history }) => {
                   onClose={() => setAnchorEl(null)}
                 >
                   {menuOptions.map((opt) => (
-                    <MenuItem
-                      key={opt.label}
-                      onClick={() => handleMenuSelect(opt.path)}
+                  <MenuItem
+                  key={opt.label}
+                  onClick={() => handleMenuSelect(opt.path)}
                     >
-                      {opt.label}
-                    </MenuItem>
+                  {opt.label}
+                  </MenuItem>
                   ))}
                 </Menu>
               </>
@@ -89,7 +105,8 @@ const SiteHeader = ({ history }) => {
                 {menuOptions.map((opt) => (
                   <Button
                     key={opt.label}
-                    color="inherit"
+                    variant="contained"
+                    color="success"
                     onClick={() => handleMenuSelect(opt.path)}
                   >
                     {opt.label}

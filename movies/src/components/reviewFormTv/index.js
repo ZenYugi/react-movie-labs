@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
-import { MoviesContext } from "../../contexts/moviesContext";
+import { TvsContext } from "../../contexts/tvsContext";
+
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
@@ -35,9 +36,6 @@ const ratings = [
   },
 ];
 
-
-
-
 const styles = {
   root: {
     marginTop: 2,
@@ -65,14 +63,22 @@ const styles = {
   },
 };
 
-const ReviewForm = ({ movie }) => {
+const ReviewForm = ({ tv }) => {
 
-const [open, setOpen] = useState(false); 
-const navigate = useNavigate();
+  const context = useContext(TvsContext);
+
 
   const [rating, setRating] = useState(3);
 
-  const context = useContext(MoviesContext);
+  const [open, setOpen] = useState(false); 
+  const navigate = useNavigate();
+
+  const handleSnackClose = (event) => {
+    setOpen(false);
+    navigate("/tvs/favorites");
+  };
+
+
 
   const defaultValues = {
     author: "",
@@ -80,7 +86,6 @@ const navigate = useNavigate();
     agree: false,
     rating: "3",
   };
-
 
   const {
     control,
@@ -94,25 +99,18 @@ const navigate = useNavigate();
   };
 
   const onSubmit = (review) => {
-    review.movieId = movie.id;
+    review.tvId = tv.id;
     review.rating = rating;
     // console.log(review);
-    context.addReview(movie, review);
+    context.addReview(tv, review);
     setOpen(true); // NEW
   };
 
-  const handleSnackClose = (event) => {
-    setOpen(false);
-    navigate("/movies/favorites");
-  };
-  
+
 
   return (
-
-
-    
     <Box component="div" sx={styles.root}>
-      <Typography component="h2" color="white" variant="h3">
+      <Typography component="h2" variant="h3">
         Write a review
       </Typography>
 
@@ -132,7 +130,6 @@ const navigate = useNavigate();
           </Typography>
         </MuiAlert>
       </Snackbar>
-
 
 
       <form sx={styles.form} onSubmit={handleSubmit(onSubmit)} noValidate>

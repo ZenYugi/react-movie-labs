@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PageTemplate from '../components/templateMovieListPage';
 import { getMovieUpcoming } from "../api/tmdb-api";
 //import { Upcoming } from "@mui/icons-material";
@@ -22,34 +22,6 @@ const Upcoming = (props) => {
     return <h1>{error.message}</h1>
   }  
   const Upcomingmovies = data.results;
-
-  
-  //const favorites = movies.filter(m => m.favorite)
-  //localStorage.setItem('favorites', JSON.stringify(favorites))
-  
-  //const addToFavorites = (movieId) => {
-    //const updatedMovies = movies.map((m) =>
-    //m.id === movieId ? { ...m, favorite: true } : m
-  //);
-   //setMovies(updatedMovies);
-  //};
-
-  //const [movies, setMovies] = useState([]);
-  //const favorites = movies.filter(m => m.favorite)
- // localStorage.setItem('favorites', JSON.stringify(favorites))
-
-//  //const addToFavorites = (movieId) => {
-//    // const updatedMovies = movies.map((m) =>
-//    // m.id === movieId ? { ...m, favorite: true } : m
-//    );
-//    setMovies(updatedMovies);
-//   };
-
-// useEffect(() => {
-//    getMovieUpcoming().then(movies => {
-//      setMovies(movies);
-//    });
-//   }, []);
 
 
   return (

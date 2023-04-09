@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-import Header from "../headerMovieList";
-import FilterCard from "../filterMoviesCard";
-import MovieList from "../movieList";
+import Header from "../headerTvList";
+import FilterCard from "../filterTvsCard";
+import TvList from "../tvList";
 import Grid from "@mui/material/Grid";
 
-function MovieListPageTemplate({ movies, title, action }) {
+function TvListPageTemplate({ tvs, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const genreId = Number(genreFilter);
 
-  let displayedMovies = movies
-    .filter((m) => {
-      return m.title.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
+  let displayedTvs = tvs
+    .filter((b) => {
+      return b.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
     })
-    .filter((m) => {
-      return genreId > 0 ? m.genre_ids.includes(genreId) : true;
+    .filter((b) => {
+      return genreId > 0 ? b.genre_ids.includes(genreId) : true;
     });
 
   const handleChange = (type, value) => {
@@ -24,21 +24,20 @@ function MovieListPageTemplate({ movies, title, action }) {
 
   return (
     <Grid container sx={{ padding: '20px' }}>
-    <Grid item xs={12}>
+      <Grid item xs={12}>
         <Header title={title} />
-    </Grid>
-    
-    <Grid item container spacing={5}>
-    <Grid key="find" item xs={12} sm={6} md={4} lg={3} xl={2}>
+      </Grid>
+      <Grid item container spacing={5}>
+        <Grid key="find" item xs={12} sm={6} md={4} lg={3} xl={2}>
           <FilterCard
             onUserInput={handleChange}
             titleFilter={nameFilter}
             genreFilter={genreFilter}
           />
         </Grid>
-        <MovieList action={action} movies={displayedMovies}></MovieList>
+        <TvList action={action} tvs={displayedTvs}></TvList>
       </Grid>
     </Grid>
   );
 }
-export default MovieListPageTemplate;
+export default TvListPageTemplate;
